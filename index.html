@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Women Safety Monitoring Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🛡️</div>
+
+            <div>
+                <h2>Women Safety</h2>
+                <p>Monitoring Dashboard</p>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-btn active" onclick="showPage('dashboard', this)">
+                🏠 Dashboard
+            </button>
+
+            <button class="nav-btn" onclick="showPage('monitoring', this)">
+                📡 Live Monitoring
+            </button>
+
+            <button class="nav-btn" onclick="showPage('history', this)">
+                🔔 Alert History
+            </button>
+
+            <button class="nav-btn" onclick="showPage('statistics', this)">
+                📊 Statistics
+            </button>
+
+            <button class="nav-btn" onclick="showPage('settings', this)">
+                ⚙️ Settings
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="woman-icon">👩🏻‍🦰</div>
+            <strong>Safe Women</strong>
+            <span>Stronger Tomorrow</span>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+                <h1>Welcome, Adhiya 👋</h1>
+                <p>Stay safe • Stay alert • Stay empowered</p>
+            </div>
+
+            <div class="online">
+                <span></span>
+                System Online
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page active-page">
+
+            <!-- TOP CARDS -->
+            <div class="top-cards">
+
+                <div class="card sensor-card">
+                    <div class="card-icon heart">❤️</div>
+
+                    <div>
+                        <p>Heart Rate</p>
+                        <h2 id="heartRate">78 BPM</h2>
+                        <span class="normal" id="heartStatus">Normal</span>
+                    </div>
+                </div>
+
+
+                <div class="card sensor-card">
+                    <div class="card-icon motion">🏃</div>
+
+                    <div>
+                        <p>Motion Status</p>
+                        <h2 id="motion">Normal</h2>
+                        <span class="normal" id="motionStatus">
+                            No unusual activity
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="card sensor-card">
+                    <div class="card-icon voice">🎙️</div>
+
+                    <div>
+                        <p>Voice Status</p>
+                        <h2 id="voice">Normal</h2>
+                        <span class="normal" id="voiceStatus">
+                            No distress detected
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="card sensor-card">
+                    <div class="card-icon risk">🛡️</div>
+
+                    <div>
+                        <p>Risk Score</p>
+                        <h2><span id="riskScore">18</span> / 100</h2>
+                        <span class="normal" id="riskStatus">
+                            Low Risk
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- SAFETY CONTROLS -->
+            <div class="control-card">
+
+                <div>
+                    <h2>🛡️ Safety Status Controls</h2>
+                    <p>Select a condition to simulate the monitoring system</p>
+                </div>
+
+                <div class="control-buttons">
+
+                    <button class="safe-btn" onclick="setStatus('SAFE')">
+                        🟢 SAFE
+                    </button>
+
+                    <button class="warning-btn" onclick="setStatus('WARNING')">
+                        🟡 WARNING
+                    </button>
+
+                    <button class="emergency-btn" onclick="setStatus('EMERGENCY')">
+                        🔴 EMERGENCY
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MIDDLE -->
+            <div class="middle-grid">
+
+                <!-- LIVE MONITORING -->
+                <div class="card large-card">
+
+                    <div class="section-title">
+                        <h2>📡 Live Monitoring</h2>
+                        <span class="live-badge">● LIVE</span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div class="mini-icon">❤️</div>
+
+                        <div class="monitor-info">
+                            <span>Heart Rate</span>
+                            <strong id="heartDetail">78 BPM</strong>
+                        </div>
+
+                        <span class="status-pill" id="heartPill">
+                            Normal
+                        </span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div class="mini-icon">🏃</div>
+
+                        <div class="monitor-info">
+                            <span>Accelerometer</span>
+                            <strong id="motionDetail">Normal</strong>
+                        </div>
+
+                        <span class="status-pill" id="motionPill">
+                            Normal
+                        </span>
+                    </div>
+
+
+                    <div class="monitor-row">
+                        <div class="mini-icon">🎙️</div>
+
+                        <div class="monitor-info">
+                            <span>Voice / Audio</span>
+                            <strong id="voiceDetail">Normal</strong>
+                        </div>
+
+                        <span class="status-pill" id="voicePill">
+                            Normal
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- RISK LEVEL -->
+                <div class="card risk-card">
+
+                    <div class="section-title">
+                        <h2>📊 Risk Level</h2>
+                    </div>
+
+                    <div class="risk-circle" id="riskCircle">
+
+                        <div>
+                            <strong id="circleScore">18</strong>
+                            <span>/ 100</span>
+                            <small id="circleText">Low Risk</small>
+                        </div>
+
+                    </div>
+
+                    <div class="risk-legend">
+                        <span>🟢 Low</span>
+                        <span>🟡 Moderate</span>
+                        <span>🟠 High</span>
+                        <span>🔴 Critical</span>
+                    </div>
+
+                </div>
+
+
+                <!-- STATUS PANEL -->
+                <div class="card safety-card" id="safetyCard">
+
+                    <div class="shield">🛡️</div>
+
+                    <h1 id="status">SAFE</h1>
+
+                    <p id="alert">
+                        No threat detected
+                    </p>
+
+                    <hr>
+
+                    <p class="safety-message">
+                        Your safety is our priority.<br>
+                        Stay alert and stay safe.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM GRID -->
+            <div class="bottom-grid">
+
+                <!-- STATISTICS -->
+                <div class="card">
+
+                    <div class="section-title">
+                        <h2>📊 Today's Statistics</h2>
+                    </div>
+
+                    <div class="stats">
+
+                        <div>
+                            <span>Total Alerts</span>
+                            <strong id="totalAlerts">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Warnings</span>
+                            <strong id="warningCount">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Emergency</span>
+                            <strong id="emergencyCount">0</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ALERT HISTORY -->
+                <div class="card">
+
+                    <div class="section-title">
+                        <h2>🔔 Alert History</h2>
+                    </div>
+
+                    <div id="historyList">
+
+                        <div class="history-item normal-history">
+                            <span>🟢</span>
+                            <div>
+                                <strong>Normal Status</strong>
+                                <small>Everything is normal.</small>
+                            </div>
+                            <time>--</time>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMERGENCY BANNER -->
+            <div class="emergency-banner" id="emergencyBanner">
+
+                <div>
+                    <h2>🚨 Emergency Alert</h2>
+                    <p id="bannerText">
+                        System is monitoring your safety.
+                    </p>
+                </div>
+
+                <button onclick="showPage('history')">
+                    View Details →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LIVE MONITORING ================= -->
+
+        <section id="monitoring" class="page">
+
+            <div class="page-title">
+                <h2>📡 Live Monitoring</h2>
+                <p>Real-time monitoring of safety parameters</p>
+            </div>
+
+            <div class="monitor-large">
+
+                <div class="monitor-box">
+                    <span>❤️</span>
+                    <h3>Heart Rate</h3>
+                    <strong id="pageHeart">78 BPM</strong>
+                    <small>Normal</small>
+                </div>
+
+                <div class="monitor-box">
+                    <span>🏃</span>
+                    <h3>Motion Sensor</h3>
+                    <strong id="pageMotion">Normal</strong>
+                    <small>Stable movement</small>
+                </div>
+
+                <div class="monitor-box">
+                    <span>🎙️</span>
+                    <h3>Voice Detection</h3>
+                    <strong id="pageVoice">Normal</strong>
+                    <small>No distress detected</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HISTORY ================= -->
+
+        <section id="history" class="page">
+
+            <div class="page-title">
+                <h2>🔔 Alert History</h2>
+                <p>Recorded safety events</p>
+            </div>
+
+            <div class="card history-page" id="fullHistory">
+
+                <div class="history-item normal-history">
+                    <span>🟢</span>
+                    <div>
+                        <strong>System Started</strong>
+                        <small>Monitoring system is active.</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section id="statistics" class="page">
+
+            <div class="page-title">
+                <h2>📊 Statistics</h2>
+                <p>Safety monitoring statistics</p>
+            </div>
+
+            <div class="statistics-grid">
+
+                <div class="stat-box">
+                    <span>🚨</span>
+                    <h3>Total Alerts</h3>
+                    <strong id="statTotal">0</strong>
+                </div>
+
+                <div class="stat-box">
+                    <span>⚠️</span>
+                    <h3>Warnings</h3>
+                    <strong id="statWarning">0</strong>
+                </div>
+
+                <div class="stat-box">
+                    <span>🚨</span>
+                    <h3>Emergency</h3>
+                    <strong id="statEmergency">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+
+        <section id="settings" class="page">
+
+            <div class="page-title">
+                <h2>⚙️ System Settings</h2>
+                <p>Monitoring system status</p>
+            </div>
+
+            <div class="card settings-card">
+
+                <div class="setting-row">
+                    <span>❤️ Heart Rate Sensor</span>
+                    <strong>● Connected</strong>
+                </div>
+
+                <div class="setting-row">
+                    <span>🏃 Motion Sensor</span>
+                    <strong>● Connected</strong>
+                </div>
+
+                <div class="setting-row">
+                    <span>🎙️ Voice Sensor</span>
+                    <strong>● Connected</strong>
+                </div>
+
+                <div class="setting-row">
+                    <span>📡 Monitoring System</span>
+                    <strong>● Active</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
