@@ -17,11 +17,11 @@ This project provides a simple and interactive interface for monitoring women's 
 - 📱 Responsive dashboard interface
 
 ## Technologies Used
-1.HTML
-2.CSS
-3.JavaScript
-4.Java
-5.GitHub
+- HTML
+- CSS
+- JavaScript
+- Java
+- GitHub
 
 ## Dashboard Modules
 1. **Dashboard** – Overall safety status and risk level
